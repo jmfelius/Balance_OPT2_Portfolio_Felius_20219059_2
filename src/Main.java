@@ -13,7 +13,7 @@ public class Main {
 
         balance.addFixedAsset("kantoor", 50000, 10000, 2.5);
         balance.addDebt("jansen", 5000,5);
-        balance.addReceivale("peters", 4000,4);
+        balance.addReceivable("peters", 4000,4);
         balance.addAmount("jansen", 700);
         balance.addAmount("peters", 200);
         balance.subtractAmount("peters", 1700);

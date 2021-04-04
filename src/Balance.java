@@ -34,7 +34,7 @@ public class Balance {
      * @param receivable
      * @param interestRate
      */
-    public void addReceivale(String nameDebtor, double receivable, double interestRate) {
+    public void addReceivable(String nameDebtor, double receivable, double interestRate) {
         // adds new receivable object to list
         this.consistsOf.add(new Receivables(nameDebtor, receivable, interestRate));
     }
