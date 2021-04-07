@@ -21,23 +21,24 @@ public class Receivables extends Activa_Passiva
 
     public double getBalance()
     {
-
         return receivable;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return nameDebtor;
     }
 
-    //@Override
-    public void addAmount(double amount) {
-       // super.addAmount(amount);
+    @Override
+    public void addAmount(double amount)
+    {
         receivable += amount;
     }
 
     @Override
-    public void subtractAmount(double amount) {
-        //super.subtractAmount(amount);
+    public void subtractAmount(double amount)
+    {
         receivable -= amount;
+
     }
 }

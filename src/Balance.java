@@ -10,8 +10,8 @@ public class Balance {
     /**
      * an arayList consistsOf is constructed
      */
-    public Balance() {
-        this.consistsOf = new ArrayList<Activa_Passiva>();
+    public  Balance() {
+     this.consistsOf = new ArrayList<Activa_Passiva>();
     }
 
     /**
@@ -22,7 +22,7 @@ public class Balance {
      * @param depreciationRate
      */
     public void addFixedAsset(String assetName, double assetPurchaseValue, double remainingValue,
-                              double depreciationRate) {
+                                     double depreciationRate) {
         // adds new fixed asset object to array list
         this.consistsOf.add(new FixedAssets(assetName, assetPurchaseValue, remainingValue, depreciationRate));
 
@@ -50,11 +50,20 @@ public class Balance {
         this.consistsOf.add(new Debt(nameCreditor, debt, interestRate));
     }
 
+    /**
+     * make a provision for a specific debtor
+     * @param provisionName
+     */
     public void addProvision(String provisionName) {
         // adds new debt (creditor object to list
         this.consistsOf.add(new Provisions(provisionName));
     }
 
+    /**
+     * add an amount to a specific activum or passivum
+     * @param name
+     * @param amount
+     */
     public void addAmount(String name, double amount) {
         for (Activa_Passiva activum_passivum : consistsOf) {
             if (name.equals(activum_passivum.getName())) {
@@ -63,6 +72,11 @@ public class Balance {
         }
     }
 
+    /**
+     * subtract a specific amount from a specific activum/passivum
+     * @param name
+     * @param amount
+     */
     public void subtractAmount(String name, double amount)
     {
         for (Activa_Passiva activum_passivum : consistsOf) {
@@ -72,6 +86,10 @@ public class Balance {
         }
     }
 
+    /**
+     * declares and initialized balace total of all assets and liabilities at year end.
+     * @return balance total
+     */
     public double balanceTotal ()
     {
             double balanceTotal = 0;
