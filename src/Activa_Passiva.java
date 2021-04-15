@@ -2,6 +2,7 @@ import org.w3c.dom.ls.LSOutput;
 
 public abstract class Activa_Passiva
 {
+    protected String activum_passivum;
     protected double amount;
 
     public Activa_Passiva()

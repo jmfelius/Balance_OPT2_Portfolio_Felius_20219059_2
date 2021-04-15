@@ -3,7 +3,7 @@ public class FixedAssets extends Activa_Passiva
     /**
      declaration of instance varibles
      */
-    private String asset;
+
     private double depreciationRate;
     private double remainingValue;
     private double assetPurchaseValue;
@@ -14,7 +14,7 @@ public class FixedAssets extends Activa_Passiva
      */
     public FixedAssets (String assetName, double assetPurchaseValue, double remainingValue, double depreciationRate)
     {
-        this.asset = assetName;
+        super.activum_passivum = assetName;
         this.assetPurchaseValue = assetPurchaseValue;
         this.remainingValue = remainingValue;
         this.depreciationRate = depreciationRate;
@@ -23,7 +23,7 @@ public class FixedAssets extends Activa_Passiva
 
     @Override
     public String getName() {
-        return asset;
+        return activum_passivum;
     }
 
     /**
