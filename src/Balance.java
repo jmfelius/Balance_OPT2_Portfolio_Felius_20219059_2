@@ -3,6 +3,12 @@ import java.util.ArrayList;
 public class Balance {
 
     /**
+     * declaration of cash position: all mutations of Activa_Passiva have
+     * corresponding mirror mutations of cash position
+     */
+    private double cashPosition;
+    private double startingCashPosition;
+    /**
      * an array list is declared
      */
     public ArrayList<Activa_Passiva> consistsOf;
@@ -12,6 +18,14 @@ public class Balance {
      */
     public  Balance() {
      this.consistsOf = new ArrayList<Activa_Passiva>();
+    }
+
+    /** initialize starting cash position */
+
+    public void startingCashPosition (double cashPosition)
+    {
+        this.cashPosition = cashPosition;
+        this.startingCashPosition = cashPosition;
     }
 
     /**
@@ -25,7 +39,7 @@ public class Balance {
                                      double depreciationRate) {
         // adds new fixed asset object to array list
         this.consistsOf.add(new FixedAssets(assetName, assetPurchaseValue, remainingValue, depreciationRate));
-
+        cashPosition -= assetPurchaseValue;
     }
 
     /**
@@ -37,6 +51,7 @@ public class Balance {
     public void addReceivable(String nameDebtor, double receivable, double interestRate) {
         // adds new receivable object to list
         this.consistsOf.add(new Receivables(nameDebtor, receivable, interestRate));
+        cashPosition -= receivable;
     }
 
     /**
@@ -46,8 +61,9 @@ public class Balance {
      * @param interestRate
      */
     public void addDebt(String nameCreditor, double debt, double interestRate) {
-        // adds new debt (creditor object to list
+        // adds new debt (creditor object to list)
         this.consistsOf.add(new Debt(nameCreditor, debt, interestRate));
+        cashPosition += debt;
     }
 
     /**
@@ -68,6 +84,15 @@ public class Balance {
         for (Activa_Passiva activum_passivum : consistsOf) {
             if (name.equals(activum_passivum.getName())) {
                 activum_passivum.addAmount(amount);
+                if ("class Debt".equals(activum_passivum.getClass().toString()))
+                {
+                    cashPosition += amount;
+                }
+                else if ("class Receivables".equals(activum_passivum.getClass().toString()))
+                {
+                    cashPosition -= amount;
+                }
+
             }
         }
     }
@@ -82,6 +107,7 @@ public class Balance {
         for (Activa_Passiva activum_passivum : consistsOf) {
             if (name.equals(activum_passivum.getName())) {
                 activum_passivum.subtractAmount(amount);
+                cashPosition += amount;
             }
         }
     }
@@ -92,12 +118,22 @@ public class Balance {
      */
     public double balanceTotal ()
     {
-            double balanceTotal = 0;
+            double balanceTotal = cashPosition;
             for (Activa_Passiva activa_passiva : consistsOf)
             {
                 balanceTotal += activa_passiva.getYearEndBalance();
             }
             return balanceTotal;
+    }
+
+    public double yearEndResult()
+    {
+        return  balanceTotal() - startingCashPosition;
+    }
+
+    public double getCashPosition()
+    {
+        return cashPosition;
     }
 
 }

@@ -14,16 +14,11 @@ public class FixedAssets extends Activa_Passiva
      */
     public FixedAssets (String assetName, double assetPurchaseValue, double remainingValue, double depreciationRate)
     {
-        super.activum_passivum = assetName;
+        setName(assetName);
         this.assetPurchaseValue = assetPurchaseValue;
         this.remainingValue = remainingValue;
         this.depreciationRate = depreciationRate;
         value = assetPurchaseValue;
-    }
-
-    @Override
-    public String getName() {
-        return activum_passivum;
     }
 
     /**

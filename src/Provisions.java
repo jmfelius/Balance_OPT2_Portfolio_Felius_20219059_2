@@ -1,37 +1,13 @@
 public class Provisions extends Activa_Passiva
 {
-    private String BadDebtorName;
-    private double provisionValue;
-
-    public Provisions ( String debtorName)
+    public Provisions (String badDebtorName)
     {
-        this.BadDebtorName = debtorName;
-    }
-
-    public double getBalance()
-    {
-                return  provisionValue;
-    }
-
-    public void addAmount(double amount)
-    {
-                provisionValue += amount;
-    }
-
-    @Override
-    public void subtractAmount(double amount) {
-        provisionValue += amount;
-    }
-
-    @Override
-    public String getName()
-    {
-        return BadDebtorName;
+        setName(badDebtorName);
     }
 
     @Override
     public double getYearEndBalance()
     {
-        return - provisionValue;
+        return - getBalance();
     }
 }
