@@ -17,7 +17,7 @@ public class Balance {
      * an arayList consistsOf is constructed
      */
     public  Balance() {
-     this.consistsOf = new ArrayList<Activa_Passiva>();
+     this.consistsOf = new ArrayList<>();
     }
 
     /** initialize starting cash position */
@@ -33,7 +33,7 @@ public class Balance {
      * @param assetName name of fixed asset
      * @param assetPurchaseValue purchase price
      * @param remainingValue remaining value after economic lifetime
-     * @param depreciationRate
+     * @param depreciationRate depreciation rate with purchase price minus remaining value as basis
      */
     public void addFixedAsset(String assetName, double assetPurchaseValue, double remainingValue,
                                      double depreciationRate) {
@@ -47,6 +47,7 @@ public class Balance {
      * @param nameDebtor
      * @param receivable
      * @param interestRate
+     * cash position is reduced with amount of receivable
      */
     public void addReceivable(String nameDebtor, double receivable, double interestRate) {
         // adds new receivable object to list
@@ -59,6 +60,7 @@ public class Balance {
      * @param nameCreditor
      * @param debt
      * @param interestRate
+     * cash position is increased with amount of added debt
      */
     public void addDebt(String nameCreditor, double debt, double interestRate) {
         // adds new debt (creditor object to list)
@@ -113,10 +115,11 @@ public class Balance {
     }
 
     /**
-     * declares and initialized balace total of all assets and liabilities at year end.
+     * declares and initializes net balance total of all assets and liabilities at year end,
+     * including cash position at year end.
      * @return balance total
      */
-    public double balanceTotal ()
+    public double balanceTotal()
     {
             double balanceTotal = cashPosition;
             for (Activa_Passiva activa_passiva : consistsOf)

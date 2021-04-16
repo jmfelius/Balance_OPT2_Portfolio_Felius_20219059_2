@@ -31,6 +31,7 @@ public abstract class Activa_Passiva
 
     public abstract double getYearEndBalance();
 
+
     public  double getBalance()
     {
         return amount;
