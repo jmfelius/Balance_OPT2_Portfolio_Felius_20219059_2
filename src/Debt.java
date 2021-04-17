@@ -1,4 +1,5 @@
-public class Debt extends Activa_Passiva {
+public class Debt extends Activa_Passiva implements InterestCalculation
+{
 
     private double interestRate;
     private double yearEndBalance;
@@ -12,7 +13,7 @@ public class Debt extends Activa_Passiva {
 
     public double getYearEndBalance()
     {
-        yearEndBalance = getBalance() * (1 + (interestRate / 100));
+        yearEndBalance = getBalance() * (interestCalculation(interestRate));
         return -yearEndBalance;
     }
 }

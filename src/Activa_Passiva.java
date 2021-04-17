@@ -5,6 +5,7 @@ public abstract class Activa_Passiva
     protected String activum_PassivumName;
     protected double amount;
 
+
     public Activa_Passiva()
     {
     }
@@ -29,8 +30,7 @@ public abstract class Activa_Passiva
         return activum_PassivumName;
     }
 
-    public abstract double getYearEndBalance();
-
+    public  abstract double getYearEndBalance();
 
     public  double getBalance()
     {

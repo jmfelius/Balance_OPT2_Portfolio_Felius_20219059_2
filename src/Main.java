@@ -13,7 +13,7 @@ public class Main {
         balance.startingCashPosition(100000);
         balance.addFixedAsset("kantoor", 50000, 10000, 2.5);
         balance.addDebt("jansen", 3000,5);
-        balance.addReceivable("peters", 1000,4);
+        balance.addReceivable("peters", 1000,10);
         balance.addAmount("jansen", 2000);
         balance.addAmount("peters", 1000);
         balance.subtractAmount("peters", 500);
