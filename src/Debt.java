@@ -13,7 +13,7 @@ public class Debt extends Activa_Passiva implements InterestCalculation
         this.interestRate = interestRate;
         addAmount(debt, date);
        super.date = date;
-        System.out.println("6. In de constructor van Debt date = "  + date );
+        System.out.println("6b. In de constructor van Debt date = "  + date );
     }
 
     public double getYearEndBalance()

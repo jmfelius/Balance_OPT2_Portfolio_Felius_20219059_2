@@ -12,7 +12,7 @@ public class Receivables extends Activa_Passiva implements InterestCalculation
         this.interestRate = interestRate;
         addAmount(receivable, date);
         super.date = date;
-        System.out.println("0. In de constructor van Receivables date = "  + date );
+        System.out.println("6a. In de constructor van Receivables date = "  + date );
     }
 
 
