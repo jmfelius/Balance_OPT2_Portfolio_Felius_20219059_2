@@ -49,9 +49,9 @@ public class Balance {
      * @param interestRate
      * cash position is reduced with amount of receivable
      */
-    public void addReceivable(String nameDebtor, double receivable, double interestRate) {
+    public void addReceivable(String nameDebtor, double receivable, double interestRate,String date) {
         // adds new receivable object to list
-        this.consistsOf.add(new Receivables(nameDebtor, receivable, interestRate));
+        this.consistsOf.add(new Receivables(nameDebtor, receivable, interestRate, date));
         cashPosition -= receivable;
     }
 
@@ -62,9 +62,9 @@ public class Balance {
      * @param interestRate
      * cash position is increased with amount of added debt
      */
-    public void addDebt(String nameCreditor, double debt, double interestRate) {
+    public void addDebt(String nameCreditor, double debt, double interestRate, String date) {
         // adds new debt (creditor object to list)
-        this.consistsOf.add(new Debt(nameCreditor, debt, interestRate));
+        this.consistsOf.add(new Debt(nameCreditor, debt, interestRate,date));
         cashPosition += debt;
     }
 
@@ -82,10 +82,10 @@ public class Balance {
      * @param name
      * @param amount
      */
-    public void addAmount(String name, double amount) {
+    public void addAmount(String name, double amount, String date) {
         for (Activa_Passiva activum_passivum : consistsOf) {
             if (name.equals(activum_passivum.getName())) {
-                activum_passivum.addAmount(amount);
+                activum_passivum.addAmount(amount, date);
                 if ("class Debt".equals(activum_passivum.getClass().toString()))
                 {
                     cashPosition += amount;
@@ -104,12 +104,20 @@ public class Balance {
      * @param name
      * @param amount
      */
-    public void subtractAmount(String name, double amount)
+    public void subtractAmount(String name, double amount, String date)
     {
         for (Activa_Passiva activum_passivum : consistsOf) {
             if (name.equals(activum_passivum.getName())) {
-                activum_passivum.subtractAmount(amount);
-                cashPosition += amount;
+                activum_passivum.subtractAmount(amount, date);
+
+                if ("class Debt".equals(activum_passivum.getClass().toString()))
+                {
+                    cashPosition -= amount;
+                }
+                else if ("class Receivables".equals(activum_passivum.getClass().toString()))
+                {
+                    cashPosition += amount;
+                }
             }
         }
     }

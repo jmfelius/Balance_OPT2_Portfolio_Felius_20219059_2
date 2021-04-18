@@ -23,9 +23,9 @@ class BalanceTest {
 
     /** Asserts whether year end balance is calculated correctly */
    @Test
-    void yearEndBalanceReceivableTest()
+   void yearEndBalanceReceivableTest()
    {
-       Receivables receivable = new Receivables("Piet",1000,5);
+       Receivables receivable = new Receivables("Piet",1000,5,"03-03");
        Assertions.assertEquals(1050, receivable.getYearEndBalance());
    }
 
@@ -35,7 +35,7 @@ class BalanceTest {
    {
        Balance balance = new Balance();
        balance.startingCashPosition(5000);
-       balance.addReceivable("Piet", 1000,5);
+       balance.addReceivable("Piet", 1000,5, "03-03");
        Assertions.assertEquals(5050, balance.balanceTotal());
 
    }

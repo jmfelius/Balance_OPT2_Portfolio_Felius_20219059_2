@@ -3,19 +3,20 @@ import org.w3c.dom.ls.LSOutput;
 public abstract class Activa_Passiva
 {
     protected String activum_PassivumName;
-    protected double amount;
+    protected double amount = 0;
+    protected String date = "01-01";
 
 
     public Activa_Passiva()
     {
     }
 
-    public void addAmount(double amount)
+    public void addAmount(double amount, String date)
     {
         this.amount += amount;
     }
 
-    public void subtractAmount (double amount)
+    public void subtractAmount (double amount, String date)
     {
         this.amount -= amount;
     }
