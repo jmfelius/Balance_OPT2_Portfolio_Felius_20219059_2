@@ -94,7 +94,6 @@ public class Balance {
                 {
                     cashPosition -= amount;
                 }
-
             }
         }
     }

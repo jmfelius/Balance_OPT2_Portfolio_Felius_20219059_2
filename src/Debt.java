@@ -13,8 +13,9 @@ public class Debt extends Activa_Passiva implements InterestCalculation
 
     public double getYearEndBalance()
     {
-        yearEndBalance = super.getBalance() + super.accumulatedInterest
-                + interestCalculation(interestRate, 0, "31-12", date0, super.getName(), super.getBalance());
+        yearEndBalance = super.getBalance() + super.accumulatedInterest + interestCalculation(interestRate, 0, "31-12", date0, super.getName(), super.getBalance());
+        //interestCalculation method is required to calculate accrued interest from last mutation date of receivable/debt to year end 31-12
+
         return -yearEndBalance;
     }
 

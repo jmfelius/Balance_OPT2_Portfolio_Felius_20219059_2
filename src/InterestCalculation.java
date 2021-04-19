@@ -8,6 +8,7 @@ public interface InterestCalculation
      default long getDifferenceDays(String date0, String date) {
 
          /**
+          * Determining days in between mutations of amounts;
           * Source for count days: https://stackoverflow.com/questions/20165564/calculating-days-between-two-dates-with-java
           * various contributors
           */
@@ -24,21 +25,26 @@ public interface InterestCalculation
          } catch (ParseException e) {
              e.printStackTrace();
          }
-
          return days;
      }
 
+    /**
+     * calculation of interest taking into account start date of receivable/debt, dates of additions
+     * and/or subtractions and year end date
+     * @param interestRate
+     * @param addAmount
+     * @param date
+     * @param date0
+     * @param getName
+     * @param getBalance
+     * @return
+     */
     default double interestCalculation(double interestRate, double addAmount, String date, String date0, String getName, double getBalance)
     {
         double accInterest = 0;
         double interest = (getBalance - addAmount) * (double)(getDifferenceDays(date0, date)) / 365 * interestRate/100;
-        System.out.printf("a. Delta dagen: %d, (date0 = %s; date = %s)\n", (getDifferenceDays(date0, date)), date0, date);
-        System.out.printf("b. getname %s, getbalance %f, addAmount %f, interest %f\n", getName, getBalance,addAmount, interest);
         accInterest += interest;
-        System.out.printf("c. getbalance %f, addAmount %f, accInterest %f\n", getBalance,addAmount,accInterest);
-        //date0 = date;
+
         return accInterest;
     }
-
-
 }
