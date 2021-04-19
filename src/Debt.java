@@ -1,24 +1,19 @@
 public class Debt extends Activa_Passiva implements InterestCalculation
 {
-
-    private double interestRate;
     private double yearEndBalance;
-    private double accInterest;
-    private String date0 = "01-01";
 
     public Debt(String nameCreditor, double debt, double interestRate, String date)
     {
         super(); //roept constructor aan uit klasse Activa_Passiva, maar daar staat niks in, dus in casu geen funct        setName(nameCreditor);
         setName(nameCreditor);
-        this.interestRate = interestRate;
+        super.interestRate = interestRate;
         addAmount(debt, date);
-       super.date = date;
-        System.out.println("6b. In de constructor van Debt date = "  + date );
+        super.date = date;
     }
 
     public double getYearEndBalance()
     {
-        yearEndBalance = super.getBalance() + accInterest
+        yearEndBalance = super.getBalance() + super.accumulatedInterest
                 + interestCalculation(interestRate, 0, "31-12", date0, super.getName(), super.getBalance());
         return -yearEndBalance;
     }
@@ -26,8 +21,14 @@ public class Debt extends Activa_Passiva implements InterestCalculation
     public void addAmount(double amount, String date)
     {
         super.addAmount(amount, date);
+        super.accumulatedInterest = interestCalculation(interestRate, amount, date, date0, super.getName(), super.getBalance());
+        date0 = date;
+    }
 
-        accInterest = interestCalculation(interestRate, amount, date, date0, super.getName(), super.getBalance());
+    public void subtractAmount(double amount, String date)
+    {
+        super.subtractAmount(amount, date);
+        super.accumulatedInterest = interestCalculation(interestRate, -amount, date, date0, super.getName(), super.getBalance());
         date0 = date;
     }
 }

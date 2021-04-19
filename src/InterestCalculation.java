@@ -9,6 +9,7 @@ public interface InterestCalculation
 
          /**
           * Source for count days: https://stackoverflow.com/questions/20165564/calculating-days-between-two-dates-with-java
+          * various contributors
           */
          SimpleDateFormat myFormat = new SimpleDateFormat("dd-MM");
 

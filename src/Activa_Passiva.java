@@ -4,7 +4,10 @@ public abstract class Activa_Passiva
 {
     protected String activum_PassivumName;
     protected double amount = 0;
-    protected String date = "01-01";
+    protected String date;
+    protected String date0 = "01-01";
+    protected double interestRate;
+    protected double accumulatedInterest;
 
 
     public Activa_Passiva()
