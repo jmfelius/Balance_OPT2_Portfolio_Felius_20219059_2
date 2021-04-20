@@ -9,7 +9,7 @@ public class Balance {
     private double cashPosition;
     private double startingCashPosition;
     /**
-     * an array list is declared
+   * an array list is declared
      */
     public ArrayList<Activa_Passiva> consistsOf;
 

@@ -5,6 +5,8 @@ import java.util.concurrent.TimeUnit;
 
 public interface InterestCalculation
 {
+    double iets = 245;
+
      default long getDifferenceDays(String date0, String date) {
 
          /**
